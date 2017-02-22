@@ -1,0 +1,40 @@
+.footer{
+    padding-top: 56px;
+    background-color: #212121;
+    color: #959595;
+}
+
+.footer h4{
+    margin-top: 10px;
+    margin-bottom: 24px;
+    color: #e0e0e0;
+}
+
+.footer a{
+    color: #959595;
+}
+
+.footer-col{
+    float: left;
+    width: 380px;
+    padding-right: 42px;
+}
+
+.footer-col .item{
+    margin-bottom: 14px;
+}
+
+.item .glyphicon{
+    margin-right: 8px;
+}
+
+.footer-copy{
+    margin-top: 42px;
+    padding: 28px 0;
+    border-top: 1px solid #959595;
+}
+
+.footer-copy p{
+    text-align: center;
+}
+

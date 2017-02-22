@@ -1,10 +1,51 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+<carousel>
+  <slide>
+    <div class="slide-img">
+      <img src="assets/images/CNC.jpg" alt="First slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>numerical control machine</h3>
+      <p></p>
+    </div>
+  </slide>
+  <slide>
+    <div class="slide-img">
+      <img src="assets/images/system.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>numerical control system</h3>
+      <p></p>
+    </div>
+  </slide>
+  <slide>
+    <div class="slide-img">
+      <img src="assets/images/machine.jpg" alt="Third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>mechanical drive</h3>
+      <p></p>
+    </div>
+  </slide>
+  <slide>
+    <div class="slide-img">
+      <img src="assets/images/motor.jpg" alt="Third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>servo motor</h3>
+      <p></p>
+    </div>
+  </slide>
+   <slide>
+    <div class="slide-img">
+      <img src="assets/images/driver.jpg" alt="Third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>servo driver</h3>
+      <p></p>
+    </div>
+  </slide>
+</carousel>
+<div class="main">
 
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
+</div>
 
-<ul>
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>

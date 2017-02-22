@@ -1,12 +1,69 @@
-<p>Angular 2 Seed is a starter project that implements best practices in coding, building and testing Angular 2 apps.</p>
-
-<h2>Features</h2>
-<ul>
-  <li>Ready to go, statically typed build system using Gulp for working with TypeScript.</li>
-  <li>Production and development builds.</li>
-  <li>Sample unit tests with Jasmine and Karma including code coverage via Istanbul.</li>
-  <li>End-to-end tests with Protractor.</li>
-  <li>Development server with live reload.</li>
-  <li>TypeScript definition management using Types.</li>
-  <li>Basic Service Worker, which implements "Cache then network strategy".</li>
-</ul>
+<div class="container about">
+    <accordion>
+        <accordion-group isOpen="true" #FAQGroup>
+            <div accordion-heading>
+                常见FAQ
+                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down':FAQGroup?.isOpen,
+                    'glyphicon-chevron-right':!FAQGroup?.isOpen}"></i>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="assets/images/about/faq.jpg" alt="常见FAQ">
+                </div>
+                <p class="col-md-9">
+                    使用问卷收集数据的基本流程是：创建问卷、编辑问卷、设置问卷、预览问卷、回收问卷、数据分析等几个步骤。
+                    问卷提供三种创建问卷方式，创建空白问卷、选择问卷模板、文本编辑器。可以灵活设置问卷的显示、回收条件，
+                    在线实时统计回收结果，并可以导出Excel和SPSS数据。详细操作指引请参照帮助中心”操作指引“部分。
+                </p>
+            </div>
+        </accordion-group>
+         <accordion-group  isOpen="true" #managerGroup>
+            <div accordion-heading>
+                数控机床数据管理
+                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down':managerGroup?.isOpen,
+                    'glyphicon-chevron-right':!managerGroup?.isOpen}"></i>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="assets/images/about/create.jpg" alt="数控机床数据管理">
+                </div>
+                <p class="col-md-9">
+                    问卷，共有三种创建问卷的方式让您来选择使用：创建空白问卷、选择问卷模板、文本编辑器，
+                    可根据自身的使用习惯，选择最合适的方式来快速创建一份问卷。
+                </p>
+            </div>
+        </accordion-group>
+         <accordion-group  isOpen="true" #selectionGroup>
+            <div accordion-heading>
+                数控机床部件选型
+                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down':selectionGroup?.isOpen,
+                    'glyphicon-chevron-right':!selectionGroup?.isOpen}"></i>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="assets/images/about/create.jpg" alt="数控机床部件选型">
+                </div>
+                <p class="col-md-9">
+                    问卷，共有三种创建问卷的方式让您来选择使用：创建空白问卷、选择问卷模板、文本编辑器，
+                    可根据自身的使用习惯，选择最合适的方式来快速创建一份问卷。
+                </p>
+            </div>
+        </accordion-group>
+         <accordion-group  isOpen="true" #simulationGroup>
+            <div accordion-heading>
+                数控机床多领域仿真
+                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down':simulationGroup?.isOpen,
+                    'glyphicon-chevron-right':!simulationGroup?.isOpen}"></i>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="assets/images/about/create.jpg" alt="数控机床多领域仿真">
+                </div>
+                <p class="col-md-9">
+                    问卷，共有三种创建问卷的方式让您来选择使用：创建空白问卷、选择问卷模板、文本编辑器，
+                    可根据自身的使用习惯，选择最合适的方式来快速创建一份问卷。
+                </p>
+            </div>
+        </accordion-group>
+    </accordion>
+</div>
