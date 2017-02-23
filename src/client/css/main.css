@@ -7,9 +7,10 @@ body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,input,form,a,p{
 }
 
 body{
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
-    font-size: 16px;
     padding-top: 50px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-size: 14px;
+    background-color: #f1f2f3
 }
 
 ol,ul,li{
@@ -31,3 +32,18 @@ a{
     visibility: hidden;
     height: 0;
 }
+
+.block{
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 8px 1px #e4e5e6;
+}
+
+.left-list{
+    width: 100%;
+}
+
+.left-list .btn{
+    height: 45px;
+}
+

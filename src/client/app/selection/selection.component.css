@@ -1,0 +1,13 @@
+.banner{
+    background: url(assets/images/selection/head-bg.jpg) no-repeat;
+    color: #fff;
+}
+
+.banner .title{
+    font-size: 80px;
+    color: #fff;
+}
+
+.banner .text{
+    font-size: 24px;
+}

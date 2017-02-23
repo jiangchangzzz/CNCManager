@@ -2,11 +2,38 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SelectionComponent } from './selection.component';
+import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './shared/CNCMachine/index';
 
 const routes: Routes = [
   { 
     path: 'selection', 
-    component: SelectionComponent 
+    component: SelectionComponent,
+    children:[
+      {
+        path: '',
+        redirectTo: 'CNCMachine',
+        pathMatch: 'full'
+      },
+      {
+        path: 'CNCMachine',
+        component: CNCMachineComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'CNCType',
+            pathMatch: 'full'
+          },
+          {
+            path: 'CNCType',
+            component: CNCTypeComponent
+          },
+          {
+            path: 'condition',
+            component: ConditionComponent
+          }
+        ]
+      }
+    ] 
   },
 ];
 
