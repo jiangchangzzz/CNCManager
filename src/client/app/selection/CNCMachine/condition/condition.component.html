@@ -1,0 +1,146 @@
+<div class="block">
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/selection/CNCMachine/CNCType']">数控机床</a></li>
+    <li class="active">工作需求</li>
+  </ol>
+  <form novalidate class="form-horizontal" role="form" #conditionForm="ngForm" (ngSubmit)="nextStep()">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">切削条件</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>纵向切削力(N)</th>
+              <th>垂直切削力(N)</th>
+              <th>进给速度(m/min)</th>
+              <th>工作时间占比(%)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tr *ngFor="let cuttingCondition of cuttingConditions;let i=index">
+            <td>{{cuttingCondition.type}}</td>
+            <td><input [name]="'lengthwaysForce'+i" type="number" class="form-control" placeholder="请输入非负数" [(ngModel)]="cuttingCondition.lengthwaysForce"
+                required nonnegative></td>
+            <td><input [name]="'verticalForce'+i" type="number" class="form-control" placeholder="请输入非负数" [(ngModel)]="cuttingCondition.verticalForce"
+                required nonnegative></td>
+            <td><input [name]="'feedSpeed'+i" type="number" class="form-control" placeholder="请输入非负数" [(ngModel)]="cuttingCondition.feedSpeed" required
+                nonnegative></td>
+            <td><input [name]="'timeScale'+i" type="number" class="form-control" placeholder="请输入非负数" [(ngModel)]="cuttingCondition.timeScale" required
+                nonnegative></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">工况</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="maxFeedSpeed" class="control-label col-md-2">最大进给速度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="maxFeedSpeed" name="maxFeedSpeed" placeholder="请输入非负数" [(ngModel)]="productCondition.maxFeedSpeed"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">m/min</p>
+          <label for="tableTravel" class="control-label col-md-2 col-md-offset-1">工作台行程:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="tableTravel" name="tableTravel" placeholder="请输入非负数" [(ngModel)]="productCondition.tableTravel"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">mm</p>
+        </div>
+        <div class="form-group">
+          <label for="productMaxMass" class="control-label col-md-2">工件最大质量:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="productMaxMass" name="productMaxMass" placeholder="请输入非负数" [(ngModel)]="productCondition.productMaxMass"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">kg</p>
+          <label for="tableMass" class="control-label col-md-2 col-md-offset-1">工作台质量:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="tableMass" name="tableMass" placeholder="请输入非负数" [(ngModel)]="productCondition.tableMass"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">kg</p>
+        </div>
+        <div class="form-group">
+          <label for="productMaxHeight" class="control-label col-md-2">工件最大高度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="productMaxHeight" name="productMaxHeight" placeholder="请输入非负数" [(ngModel)]="productCondition.productMaxHeight"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">mm</p>
+          <label for="loadCharacter" class="control-label col-md-2 col-md-offset-1">负载性质:</label>
+          <div class="col-md-2">
+            <select type="text" class="form-control" id="loadCharacter" name="loadCharacter" [(ngModel)]="productCondition.loadCharacter">
+              <option *ngFor="let loadCharacter of loadCharacterOptions" [value]="loadCharacter">
+                {{loadCharacter}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="productMaxLength" class="control-label col-md-2">工件最大长度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="productMaxLength" name="productMaxLength" placeholder="请输入非负数" [(ngModel)]="productCondition.productMaxLength"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">mm</p>
+          <label for="feedAcceleration" class="control-label col-md-2 col-md-offset-1">快速进给加速度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="feedAcceleration" name="feedAcceleration" placeholder="请输入非负数" [(ngModel)]="productCondition.feedAcceleration"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">m/s^2</p>
+        </div>
+        <div class="form-group">
+          <label for="productMaxWidth" class="control-label col-md-2">工件最大宽度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="productMaxWidth" name="productMaxWidth" placeholder="请输入非负数" [(ngModel)]="productCondition.productMaxWidth"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">mm</p>
+          <label for="spindleBoxMass" class="control-label col-md-2 col-md-offset-1">主轴箱质量:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="spindleBoxMass" name="spindleBoxMass" placeholder="请输入非负数" [(ngModel)]="productCondition.spindleBoxMass"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">kg</p>
+        </div>
+        <div class="form-group">
+          <label for="tableLength" class="control-label col-md-2">工作台长度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="tableLength" name="tableLength" placeholder="请输入非负数" [(ngModel)]="productCondition.tableLength"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">mm</p>
+          <label for="productStiffness" class="control-label col-md-2 col-md-offset-1">工件接触刚度:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="productStiffness" name="productStiffness" placeholder="请输入非负数" [(ngModel)]="productCondition.productStiffness"
+              required nonnegative>
+          </div>
+          <p class="form-control-static col-md-1">N/m</p>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warning" *ngFor="let error of formErrors">
+      <a href="#" class="close" data-dismiss="alert">
+              &times;
+            </a>
+      <strong>警告:</strong>{{error}}
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-8">
+        <button type="submit" class="btn btn-primary" [disabled]="!conditionForm.valid">下一步</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-default" (click)="reset()">重 置</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LocalStorageService } from '../../../../shared/service/local-storage.service';
+import { LocalStorageService } from '../../../shared/service/local-storage.service';
 
 @Component({
     moduleId: module.id,

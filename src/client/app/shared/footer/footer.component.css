@@ -1,11 +1,10 @@
 .footer{
-    padding-top: 56px;
+    padding-top: 40px;
     background-color: #212121;
     color: #959595;
 }
 
 .footer h4{
-    margin-top: 10px;
     margin-bottom: 24px;
     color: #e0e0e0;
 }
@@ -14,10 +13,14 @@
     color: #959595;
 }
 
-.footer-col{
+.footer .footer-col{
     float: left;
-    width: 380px;
-    padding-right: 42px;
+    width: 280px;
+    margin-right: 150px;
+}
+
+.footer .footer-col:last-child{
+    margin-right: 0;
 }
 
 .footer-col .item{
@@ -29,8 +32,8 @@
 }
 
 .footer-copy{
-    margin-top: 42px;
-    padding: 28px 0;
+    margin-top: 20px;
+    padding: 20px 0;
     border-top: 1px solid #959595;
 }
 

@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { SelectionRoutingModule } from './selection-routing.module';
 import { SelectionComponent } from './selection.component';
 
-import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './shared/CNCMachine/index';
-import { NonnegativeValidator } from './shared/directive/nonnegative-validator';
+import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './CNCMachine/index';
+import { CNCSystemComponent,SystemTypeComponent,SystemAccessoryComponent } from './CNCSystem/index';
+import { NonnegativeValidator } from './directive/index';
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import { NonnegativeValidator } from './shared/directive/nonnegative-validator';
         CNCMachineComponent,
         CNCTypeComponent,
         ConditionComponent,
+        CNCSystemComponent,
+        SystemTypeComponent,
+        SystemAccessoryComponent,
         NonnegativeValidator]
 })
 export class SelectionModule{
