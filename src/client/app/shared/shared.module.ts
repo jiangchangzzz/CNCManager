@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LocalStorageService } from './service/local-storage.service';
+import { NonnegativeValidator } from './directive/nonnegative-validator';
 
 
 /**
@@ -15,21 +17,23 @@ import { FooterComponent } from './footer/footer.component';
   imports: [CommonModule, RouterModule],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NonnegativeValidator
   ],
   exports: [
     CommonModule, 
     FormsModule, 
     RouterModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NonnegativeValidator
   ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [LocalStorageService]
     };
   }
 }

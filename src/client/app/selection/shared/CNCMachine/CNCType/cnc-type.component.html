@@ -3,12 +3,24 @@
     <li><a [routerLink]="['/selection/CNCMachine/CNCType']">数控机床</a></li>
     <li class="active">机床类型</li>
   </ol>
-  <div class="row">
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="assets/images/selection/立式车床.jpg" alt="立式车床">
-            <div class="caption">立式车床</div>
+  <form novalidate (ngSubmit)="nextStep()">
+    <div class="row">
+      <div *ngFor="let CNCType of CNCTypes">
+        <div class="col-md-4">
+          <div class="thumbnail" (click)="selectType(CNCType)" [class.active]="selectedType===CNCType">
+            <img [src]="'assets/images/selection/'+CNCType.name+'.jpg'" [alt]="CNCType.name">
+            <div class="caption">{{CNCType.name}}</div>
+          </div>
         </div>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-8">
+        <button type="submit" class="btn btn-primary" [disabled]="selectedType==null">下一步</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-default" (click)="cancel()">取 消</button>
+      </div>
+    </div>
+  </form>
 </div>
