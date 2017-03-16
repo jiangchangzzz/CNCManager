@@ -1,1 +1,54 @@
-<div>system</div>
+<div class="block">
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/selection/CNCSystem/systemType']">数控系统</a></li>
+        <li class="active">数控系统类型</li>
+    </ol>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="manufacturer" class="col-md-2 control-label">生产厂家：</label>
+            <div class="col-md-2">
+            <select id="manufacturer" class="form-control" name="manufacturer" [(ngModel)]="filterNum.Manufacturer">
+                <option *ngFor="let manufacturerOption of manufacturerOptions">
+                    {{manufacturerOption}}
+                </option>
+            </select>
+            </div>
+            <label for="SupportNumberOfChannels" class="col-md-2 control-label">支持通道数：</label>
+            <div class="col-md-2">
+                <input type="number" id="SupportNumberOfChannels" class="form-control" 
+                    name="SupportNumberOfChannels" [(ngModel)]="filterNum.SupportNumberOfChannels" min="1" 
+                    required nonnegative>
+            </div>
+            <label for="MaxControlNumberOfFeedAxis" class="col-md-2 control-label">最大进给轴数：</label>
+            <div class="col-md-2">
+                <input type="number" id="MaxControlNumberOfFeedAxis" class="col-md-2 form-control" 
+                    name="MaxControlNumberOfFeedAxis" [(ngModel)]="filterNum.MaxControlNumberOfFeedAxis" min="1"
+                    required nonnegative>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="btn-primary" role="button">型号</th>
+                <th class="btn-primary" role="button">生产厂家</th>
+                <th class="btn-primary" role="button">支持机床类型</th>
+                <th class="btn-primary" role="button">支持通道数</th>
+                <th class="btn-primary" role="button">进给轴最大控制轴数</th>
+                <th class="btn-primary" role="button">主轴最大控制轴数</th>
+                <th class="btn-primary" role="button">最大联动轴数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{NCSystem.TypeID}}</td>
+                <td>{{NCSystem.Manufacturer}}</td>
+                <td>{{NCSystem.SupportMachineType}}</td>
+                <td>{{NCSystem.SupportChannels}}</td>
+                <td>{{NCSystem.MaxNumberOfFeedShafts}}</td>
+                <td>{{NCSystem.MaxNumberOfSpindels}}</td>
+                <td>{{NCSystem.MaxNumberOfLinkageAxis}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

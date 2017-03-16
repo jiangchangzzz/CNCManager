@@ -9,6 +9,8 @@ import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './CNC
 import { CNCSystemComponent,SystemTypeComponent,SystemAccessoryComponent } from './CNCSystem/index';
 import { NonnegativeValidator } from './directive/index';
 
+import { DefaultService } from './service/index';
+
 
 @NgModule({
     imports: [CommonModule,FormsModule,SelectionRoutingModule],
@@ -21,7 +23,8 @@ import { NonnegativeValidator } from './directive/index';
         CNCSystemComponent,
         SystemTypeComponent,
         SystemAccessoryComponent,
-        NonnegativeValidator]
+        NonnegativeValidator,
+        DefaultService]
 })
 export class SelectionModule{
 
