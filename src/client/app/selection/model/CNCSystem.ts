@@ -1,4 +1,4 @@
-export class NCSystem{
+export class CNCSystem{
     /**
      * 型号
      * @type {string}

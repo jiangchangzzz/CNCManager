@@ -33,17 +33,31 @@ a{
     height: 0;
 }
 
+/*面板*/
 .block{
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 8px 1px #e4e5e6;
 }
 
+/*左副导航栏*/
 .left-list{
     width: 100%;
 }
 
 .left-list .btn{
     height: 45px;
+}
+
+.table tr:hover{
+    background-color: #cccccc;
+    color: #fff;
+    box-shadow: 0 4px 10px silver;
+    cursor: pointer;
+}
+
+.table tr.selected{
+    background-color: #cccccc;
+    color: #fff;
 }
 

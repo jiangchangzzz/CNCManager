@@ -1,0 +1,19 @@
+<div class="row">
+    <label for="pageSize" class="col-md-2">每页条目数：</label>
+    <div class="col-md-2">
+      <select id="pageSize" class="form-control" [(ngModel)]="pageSize">
+        <option *ngFor="let pageSizeOption of pageSizeOptions" [value]="pageSizeOption">
+            {{pageSizeOption}}
+        </option>
+    </select>
+    </div>
+    <div class="col-md-7 col-md-offset-1">
+        <ul class="pagination">
+            <li (click)="previousPage()" [class.disabled]="currentPage===1"><a>上一页</a></li>
+            <li *ngFor="let page of pages" (click)="changePage(page)" [class.active]="page===currentPage">
+                <a>{{page}}</a>
+            </li>
+            <li (click)="nextPage()" [class.disabled]="currentPage===pages.length"><a>下一页</a></li>
+        </ul>
+    </div>
+</div>

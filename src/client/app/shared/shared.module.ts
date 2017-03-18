@@ -5,8 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaginationComponent } from './pagination/pagination.component';
 import { LocalStorageService } from './service/local-storage.service';
-import { NonnegativeValidator } from './directive/nonnegative-validator';
+
+import { SizePipe } from './pipe/index';
 
 
 /**
@@ -14,11 +16,12 @@ import { NonnegativeValidator } from './directive/nonnegative-validator';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    NonnegativeValidator
+    PaginationComponent,
+    SizePipe
   ],
   exports: [
     CommonModule, 
@@ -26,7 +29,8 @@ import { NonnegativeValidator } from './directive/nonnegative-validator';
     RouterModule,
     HeaderComponent,
     FooterComponent,
-    NonnegativeValidator
+    PaginationComponent,
+    SizePipe
   ]
 })
 export class SharedModule {
