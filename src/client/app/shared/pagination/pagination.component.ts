@@ -29,7 +29,7 @@ export class PaginationComponent{
     set pageSize(pageSize: number){
         this._pageSize=pageSize;
         this.changePageOption();
-        this.changePage(1);
+        this.changeCurrentPage(1);
     }
     get pageSize(){
         return this._pageSize;
@@ -41,6 +41,7 @@ export class PaginationComponent{
     set totalItem(totalItem: number){
         this._totalItem=totalItem;
         this.changePageOption();
+        setTimeout(()=>this.changeCurrentPage(1));
     }
     get totalItem(){
         return this._totalItem;
@@ -50,7 +51,7 @@ export class PaginationComponent{
     onChangePage=new EventEmitter<any>();
 
     //点击页码，改变当前页码
-    changePage(page: number): void{
+    changeCurrentPage(page: number): void{
             this.currentPage=page;
 
             let startNum=(page-1)*Number(this.pageSize);
@@ -61,14 +62,14 @@ export class PaginationComponent{
     //点击上一页
     previousPage(): void{
         if(this.currentPage!==1){
-            this.changePage(this.currentPage-1);
+            this.changeCurrentPage(this.currentPage-1);
         }
     }
 
     //点击下一页
     nextPage(): void{
         if(this.currentPage!==this.pages.length){
-            this.changePage(this.currentPage+1);
+            this.changeCurrentPage(this.currentPage+1);
         }
     }
 

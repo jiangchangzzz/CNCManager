@@ -49,15 +49,19 @@ a{
     height: 45px;
 }
 
-.table tr:hover{
+.component-table tr:hover{
     background-color: #cccccc;
     color: #fff;
     box-shadow: 0 4px 10px silver;
     cursor: pointer;
 }
 
-.table tr.selected{
+.component-table tr.selected{
     background-color: #cccccc;
     color: #fff;
+}
+
+.component-table th{
+    min-width: 120px;
 }
 

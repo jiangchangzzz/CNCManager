@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { LocalStorageService } from './service/local-storage.service';
-
-import { SizePipe } from './pipe/index';
+import { LocalStorageService } from './service/index';
+import { SizePipe,OrderByPipe } from './pipe/index';
+import { OrderIconDirective } from './directive/index';
 
 
 /**
@@ -21,7 +21,9 @@ import { SizePipe } from './pipe/index';
     HeaderComponent,
     FooterComponent,
     PaginationComponent,
-    SizePipe
+    SizePipe,
+    OrderByPipe,
+    OrderIconDirective
   ],
   exports: [
     CommonModule, 
@@ -30,7 +32,9 @@ import { SizePipe } from './pipe/index';
     HeaderComponent,
     FooterComponent,
     PaginationComponent,
-    SizePipe
+    SizePipe,
+    OrderByPipe,
+    OrderIconDirective
   ]
 })
 export class SharedModule {
