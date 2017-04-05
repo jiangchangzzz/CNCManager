@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SystemTypeFilter,CNCSystem } from './../../model/index';
 import { LocalStorageService } from '../../../shared/service/index';
@@ -28,7 +29,7 @@ export class SystemTypeComponent implements OnInit{
     CNCSystems: CNCSystem[]=[];
 
     //用户当前选择的数控系统
-    selectedCNCSystem: CNCSystem;
+    selectedCNCSystem: CNCSystem=null;
 
     //页面信息
     page: any={
@@ -41,7 +42,8 @@ export class SystemTypeComponent implements OnInit{
 
     constructor(
         private localStorageService: LocalStorageService,
-        private NCSystemTypeService: CNCSystemService
+        private NCSystemTypeService: CNCSystemService,
+        private router: Router
     ){}
 
     ngOnInit(){
@@ -74,7 +76,19 @@ export class SystemTypeComponent implements OnInit{
         return CNCSystem.TypeID;
     }
 
+    //选择数控机床系统型号
     selectCNCSystem(CNCSystem: CNCSystem){
         this.selectedCNCSystem=CNCSystem;
+    }
+
+    //下一步
+    nextStep(): void{
+        this.localStorageService.setItem('CNCSystem',this.selectedCNCSystem);
+        this.router.navigate(['/selection/CNCSystem/systemAccessory']);
+    }
+
+    //取消选择
+    cancel(): void{
+        this.selectedCNCSystem=null;
     }
 }

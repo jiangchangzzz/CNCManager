@@ -36,7 +36,7 @@ export class ConditionComponent implements AfterViewChecked,OnInit {
             productCondition: this.productCondition
         };
         this.localStorageService.setItem('condition',condition);
-        this.router.navigate(['./']);
+        this.router.navigate(['/selection/CNCSystem/systemType']);
     }
 
     //点击重置，重置页面数据

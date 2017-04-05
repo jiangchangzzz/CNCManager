@@ -74,4 +74,12 @@
     </table>
   </div>
   <cnc-pagination [totalItem]="(CNCSystems | systemTypePipe: filter).length" (onChangePage)="changePage($event)"></cnc-pagination>
+  <div class="row">
+      <div class="col-md-2 col-md-offset-8">
+        <button type="submit" class="btn btn-primary" (click)="nextStep()" [disabled]="selectedCNCSystem==null">下一步</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-default" (click)="cancel()">取 消</button>
+      </div>
+  </div>
 </div>
