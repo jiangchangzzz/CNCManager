@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SelectionComponent } from './selection.component';
 import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './CNCMachine/index';
 import { CNCSystemComponent,SystemTypeComponent,SystemAccessoryComponent } from './CNCSystem/index';
+import { FeedSystemComponent,BallscrewComponent,BearingComponent,CouplingComponent,DriverComponent,GuideComponent,MotorComponent } from './feed-system/index';
 
 const routes: Routes = [
   { 
@@ -50,6 +51,41 @@ const routes: Routes = [
           {
             path: 'systemAccessory',
             component: SystemAccessoryComponent
+          }
+        ]
+      },
+      {
+        path: 'feedSystem/:feed',
+        component: FeedSystemComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'guide',
+            pathMatch: 'full'
+          },
+          {
+            path: 'guide',
+            component: GuideComponent
+          },
+          {
+            path: 'ballscrew',
+            component: BallscrewComponent
+          },
+          {
+            path: 'bearing',
+            component: BearingComponent
+          },
+          {
+            path: 'coupling',
+            component: CouplingComponent
+          },
+          {
+            path: 'motor',
+            component: MotorComponent
+          },
+          {
+            path: 'driver',
+            component: DriverComponent
           }
         ]
       }

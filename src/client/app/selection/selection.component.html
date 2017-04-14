@@ -10,6 +10,26 @@
   <ul class="nav nav-tabs nav-justified middle-nav">
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/CNCMachine']">数控机床</a></li>
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/CNCSystem']">数控系统</a></li>
+    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','X']">进给轴x轴</a></li>
+    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Y']">进给轴y轴</a></li>
+    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Z']">进给轴z轴</a></li>
+    <li role="presentation" class="add-feedsystem" (click)="showAddedModal()"><a><i class="glyphicon glyphicon-plus"></i></a></li>
   </ul>
+  <div *ngIf="isAddedModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #addedModal="bs-modal" class="modal fade"
+    tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">添加额外的轴</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="hideAddedModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

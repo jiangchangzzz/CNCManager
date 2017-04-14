@@ -8,6 +8,7 @@ import { SelectionComponent } from './selection.component';
 
 import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './CNCMachine/index';
 import { CNCSystemComponent,SystemTypeComponent,SystemAccessoryComponent } from './CNCSystem/index';
+import { FeedSystemComponent,BallscrewComponent,BearingComponent,CouplingComponent,DriverComponent,GuideComponent,MotorComponent } from './feed-system/index';
 import { NonnegativeValidator } from './directive/index';
 import { DefaultService } from './service/index';
 import { SystemTypePipe } from './pipe/index';
@@ -23,6 +24,13 @@ import { SystemTypePipe } from './pipe/index';
         CNCSystemComponent,
         SystemTypeComponent,
         SystemAccessoryComponent,
+        FeedSystemComponent,
+        BallscrewComponent,
+        BearingComponent,
+        CouplingComponent,
+        DriverComponent,
+        GuideComponent,
+        MotorComponent,
         NonnegativeValidator,
         SystemTypePipe],
     providers: [

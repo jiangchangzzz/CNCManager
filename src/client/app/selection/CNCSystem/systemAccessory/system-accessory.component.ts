@@ -87,9 +87,9 @@ export class SystemAccessoryComponent implements OnInit{
             if(this.IOModuleOptions.length>0){
                 this.IOUnit.IOModuleId=this.IOModuleOptions[0];
             }
-            console.log(this.baseboardOptions);
-            console.log(this.communicationboardOptions);
-            console.log(this.IOModuleOptions);
+            //console.log(this.baseboardOptions);
+            //console.log(this.communicationboardOptions);
+            //console.log(this.IOModuleOptions);
         });
 
         //获取UPS电源型号
@@ -101,7 +101,7 @@ export class SystemAccessoryComponent implements OnInit{
             if(this.UPSPowerOptions.length>0){
                 this.UPSPower.id=this.UPSPowerOptions[0];
             }
-            console.log(this.UPSPowerOptions);
+            //console.log(this.UPSPowerOptions);
         });
 
         //获取手操盘型号数据
@@ -113,7 +113,7 @@ export class SystemAccessoryComponent implements OnInit{
             if(this.wheelOptions.length>0){
                 this.wheel.id=this.wheelOptions[0];
             }
-            console.log(this.wheelOptions);
+            //console.log(this.wheelOptions);
         })
     }
 
@@ -131,7 +131,7 @@ export class SystemAccessoryComponent implements OnInit{
 
     //取消选择
     cancel(): void{
-        this.IOUnit.
+        
     }
 }
 

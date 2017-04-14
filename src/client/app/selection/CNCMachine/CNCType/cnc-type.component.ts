@@ -36,7 +36,7 @@ export class CNCTypeComponent{
 
         //如果上次选的机床类型和新选择的不同，则清除所有本地存储
         let oldCNCType=this.localStorageService.getItem('CNCType');
-        if(oldCNCType.name!==this.selectedType){
+        if(oldCNCType && oldCNCType.name!==this.selectedType){
             this.localStorageService.clear();
         }
 

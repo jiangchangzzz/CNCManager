@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ng2-bootstrap';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -16,7 +17,7 @@ import { OrderIconDirective } from './directive/index';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule,ModalModule.forRoot()],
   declarations: [
     HeaderComponent,
     FooterComponent,
@@ -29,6 +30,7 @@ import { OrderIconDirective } from './directive/index';
     CommonModule, 
     FormsModule, 
     RouterModule,
+    ModalModule,
     HeaderComponent,
     FooterComponent,
     PaginationComponent,
