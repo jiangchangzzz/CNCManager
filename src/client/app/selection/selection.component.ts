@@ -1,5 +1,6 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild,OnInit } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap/modal';
+import { LocalStorageService }from '../shared/service/index';
 
 
 @Component({
@@ -8,7 +9,19 @@ import { ModalDirective } from 'ng2-bootstrap/modal';
     templateUrl: 'selection.component.html',
     styleUrls: ['selection.component.css']
 })
-export class SelectionComponent{
+export class SelectionComponent implements OnInit{
+    shaftName: string;
+
+    constructor(
+        private localStorageService: LocalStorageService
+    ){
+
+    }
+
+    ngOnInit(){
+
+    }
+
     @ViewChild('addedModal')
     addedModal: ModalDirective;
 
@@ -24,5 +37,9 @@ export class SelectionComponent{
 
     onHidden():void{
         this.isAddedModalShown=false;
+    }
+
+    doSubmit(): void{
+        
     }
 }

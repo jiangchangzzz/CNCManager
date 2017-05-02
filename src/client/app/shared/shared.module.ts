@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ng2-bootstrap';
 
@@ -17,7 +17,7 @@ import { OrderIconDirective } from './directive/index';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule,ModalModule.forRoot()],
+  imports: [CommonModule, RouterModule, FormsModule,ReactiveFormsModule,ModalModule.forRoot()],
   declarations: [
     HeaderComponent,
     FooterComponent,
@@ -28,8 +28,9 @@ import { OrderIconDirective } from './directive/index';
   ],
   exports: [
     CommonModule, 
-    FormsModule, 
+    FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     ModalModule,
     HeaderComponent,
     FooterComponent,

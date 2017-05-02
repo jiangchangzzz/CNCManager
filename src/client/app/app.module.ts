@@ -10,13 +10,15 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { SelectionModule } from './selection/selection.module';
 import { SimulationModule } from './simulation/simulation.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule.forRoot(),
     HomeModule,
     AboutModule,
     SelectionModule,
-    SimulationModule
+    SimulationModule,
+    UserModule
     ],
   declarations: [AppComponent],
   providers: [{

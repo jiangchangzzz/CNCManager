@@ -51,7 +51,7 @@ export class CNCTypeComponent{
 }
 
 //数控机床类型
-class CNCType{
+export class CNCType{
     name: string;
     support: string;
 }

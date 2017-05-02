@@ -25,9 +25,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <div class="modal-body">
-          <p></p>
-        </div>
+        <form class="form-horizontal" role="form" (ngSubmit)="doSubmit()" novalidate>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="shaftName">轴的名称</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="shaftName" name="shaftName" [(ngModel)]="shaftName" required maxlength="5">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">确认</button>
+            <button type="button" class="btn btn-default" (click)="hideAddedModal()">取消</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

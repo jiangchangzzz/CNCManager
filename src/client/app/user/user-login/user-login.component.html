@@ -1,0 +1,46 @@
+<div class="container main-container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">用户登录</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form form-horizontal" role="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="userName">用户名：</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="userName" placeholder="请输入用户名" formControlName="userName">
+                        <div class="text-danger" *ngIf="formErrors.userName">
+                            {{formErrors.userName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="password">密码：</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="password" placeholder="请输入密码" formControlName="password">
+                        <div class="text-danger" *ngIf="formErrors.password">
+                            {{formErrors.password}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-8 checkbox">
+                        <label>
+                            <input type="checkbox" formControlName="remeberMe">
+                            记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-offset-3 col-md-8 alert alert-danger" *ngIf=formErrors.formError>
+                    {{formErrors.formError}}
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 cold-md-8">
+                        <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">登 录</button>
+                        <button type="button" class="btn btn-danger" (click)="forgetPassword()">忘记密码？</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

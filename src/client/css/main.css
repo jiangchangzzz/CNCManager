@@ -33,6 +33,11 @@ a{
     height: 0;
 }
 
+.main-container{
+    padding-top: 30px;
+    min-height: 800px;
+}
+
 /*面板*/
 .block{
     padding: 20px;

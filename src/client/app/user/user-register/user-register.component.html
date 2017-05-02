@@ -1,0 +1,65 @@
+<div class="container main-container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">用户注册</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" [formGroup]="userForm" (ngSubmit)="register()" novalidate>
+                <div class="form-group" [ngClass]="{'has-error': formErrors.userName}">
+                    <label class="col-md-3 control-label" for="userName">用户名：</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="userName" placeholder="用户名4到32个字符" formControlName="userName">
+                        <div *ngIf="formErrors.userName" class="text-danger">
+                            {{formErrors.userName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': formErrors.nickName}">
+                    <label class="col-md-3 control-label" for="nickName">昵称：</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="nickName" placeholder="昵称2到32个字符" formControlName="nickName">
+                        <div *ngIf="formErrors.nickName" class="text-danger">
+                            {{formErrors.nickName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+                    <label class="col-md-3 control-label" for="email">常用邮箱：</label>
+                    <div class="col-md-8">
+                        <input type="email" class="form-control" id="email" placeholder="常用邮箱" formControlName="email">
+                        <div *ngIf="formErrors.email" class="text-danger">
+                            {{formErrors.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': formErrors.password}">
+                    <label class="col-md-3 control-label" for="password">密码：</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="password" placeholder="密码，至少8位" formControlName="password">
+                        <div *ngIf="formErrors.password" class="text-danger">
+                            {{formErrors.password}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': formErrors.confirmPassword}">
+                    <label class="col-md-3 control-label" for="confirmPassword">重复密码：</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="重复密码，两次输入必须一致" formControlName="confirmPassword">
+                        <div *ngIf="formErrors.password" class="text-danger">
+                            {{formErrors.confirmPassword}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="formErrors.formError" class="col-md-offset-3 col-md-8 alert alert-danger">
+                    {{formErrors.formError}}
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-8">
+                        <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">注 册</button>
+                        <button type="button" class="btn btn-default" (click)="reset()">重 置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
