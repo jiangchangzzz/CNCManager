@@ -46,7 +46,8 @@ export class UserRegisterComponent implements OnInit {
         'confirmPassword': {
             'required': '重复密码必须输入',
             'minlength': '密码至少8位',
-            'maxlength': '密码最多16位'
+            'maxlength': '密码最多16位',
+            'validateEqual': '两次输入的密码不一致'
         }
     }
 
@@ -123,6 +124,7 @@ export class UserRegisterComponent implements OnInit {
         }
     }
 
+    //用户注册
     register(): void{
         if(this.userForm.valid){
             this.userInfo=this.userForm.value;
@@ -133,6 +135,7 @@ export class UserRegisterComponent implements OnInit {
         console.log(this.userInfo);
     }
 
+    //重置表单
     reset(): void{
         this.userForm.reset();
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+ 
 import { User } from '../model/user';
 
 @Component({
@@ -34,7 +35,8 @@ export class UserLoginComponent implements OnInit {
     }
 
     constructor(
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) { }
 
     ngOnInit() { 
@@ -64,7 +66,7 @@ export class UserLoginComponent implements OnInit {
             ]
         });
         
-        this.loginForm.valueChanges.subscribe((data)=>this.onValueChanged(data));
+        this.loginForm.valueChanges.subscribe(data=>this.onValueChanged(data));
         this.onValueChanged();
     }
 
@@ -98,7 +100,7 @@ export class UserLoginComponent implements OnInit {
     }
 
     //忘记密码
-    forgetPassword(): void{
-
+    forgetPwd(): void{
+        this.router.navigate(['/forgetpwd']);
     }
 }

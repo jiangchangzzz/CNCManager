@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { UserRoutingModule } from './user-routing.component';
-import { UserRegisterComponent,UserLoginComponent } from './index';
+import { UserRegisterComponent,UserLoginComponent,ForgetPwdComponent } from './index';
+import { EqualValidator } from './directive/equal-validator.directive';
 
 @NgModule({
     imports: [
@@ -11,7 +12,9 @@ import { UserRegisterComponent,UserLoginComponent } from './index';
     exports: [],
     declarations: [
         UserRegisterComponent,
-        UserLoginComponent],
+        UserLoginComponent,
+        ForgetPwdComponent,
+        EqualValidator],
     providers: [],
 })
 export class UserModule { }
