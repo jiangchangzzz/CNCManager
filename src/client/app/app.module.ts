@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { ManagerModule } from './manager/manager.module';
 import { SelectionModule } from './selection/selection.module';
 import { SimulationModule } from './simulation/simulation.module';
 import { UserModule } from './user/user.module';
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
   imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule.forRoot(),
     HomeModule,
     AboutModule,
+    ManagerModule,
     SelectionModule,
     SimulationModule,
     UserModule

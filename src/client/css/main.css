@@ -35,6 +35,7 @@ a{
 
 .main-container{
     padding-top: 30px;
+    padding-bottom: 30px;
     min-height: 800px;
 }
 
