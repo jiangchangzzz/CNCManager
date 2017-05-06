@@ -6,11 +6,16 @@ body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,input,form,a,p{
     padding: 0;
 }
 
+html{
+    height: 100%;
+}
+
 body{
+    height: 100%;
     padding-top: 50px;
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
     font-size: 14px;
-    background-color: #f1f2f3
+    background-color: #f1f2f3;
 }
 
 ol,ul,li{

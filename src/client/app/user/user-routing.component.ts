@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserRegisterComponent,UserLoginComponent,ForgetPwdComponent } from './index';
+import { UserRegisterComponent,UserLoginComponent,ForgetPwdComponent,UserCenterComponent } from './index';
 
 const routes: Routes = [
   { 
@@ -15,6 +15,10 @@ const routes: Routes = [
   {
       path: 'forgetpwd',
       component: ForgetPwdComponent
+  },
+  {
+      path: 'center',
+      component: UserCenterComponent
   }
 ];
 
@@ -23,5 +27,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class UserRoutingModule { }
-
-export const routedComponents = [UserRegisterComponent,UserLoginComponent];

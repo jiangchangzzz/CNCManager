@@ -23,9 +23,13 @@
         <li routerLinkActive="active"><a [routerLink]="['/simulation']">开始仿真</a></li>
         <li routerLinkActive="active"><a [routerLink]="['/about']">关于</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!nickName">
         <li><button class="btn btn-success navbar-btn sign-btn" [routerLink]="['/register']">注 册</button></li>
         <li><button class="btn btn-default navbar-btn sign-btn" [routerLink]="['/login']">登 录</button></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="nickName">
+        <li routerLinkActive="active"><a [routerLink]="['/center']">欢迎你：{{nickName}}</a></li>
+        <li (click)="logout()"><a>退 出</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="form-group search-group">

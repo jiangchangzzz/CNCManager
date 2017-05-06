@@ -20,7 +20,7 @@ import { UserModule } from './user/user.module';
     ManagerModule,
     SelectionModule,
     SimulationModule,
-    UserModule
+    UserModule.forRoot()
     ],
   declarations: [AppComponent],
   providers: [{

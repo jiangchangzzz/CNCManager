@@ -76,6 +76,15 @@ export class ProjectConfig extends SeedConfig {
       main: 'moment.js',
       defaultExtension: 'js'
     }
+  },
+
+  {
+    name: 'ngx-fullpage',
+    path: 'node_modules/ngx-fullpage',
+    packageMeta:{
+      main: 'ngx-fullpage.js',
+      defaultExtension: ''
+    }
   }
   ];    
   this.addPackagesBundles(additionalPackages);

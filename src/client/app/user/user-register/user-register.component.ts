@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
     moduleId: module.id,
@@ -52,7 +54,9 @@ export class UserRegisterComponent implements OnInit {
     }
 
     constructor(
-        public fb: FormBuilder
+        private fb: FormBuilder,
+        private userService: UserService,
+        private router: Router
     ) { }
 
     ngOnInit() { 
@@ -128,11 +132,20 @@ export class UserRegisterComponent implements OnInit {
     register(): void{
         if(this.userForm.valid){
             this.userInfo=this.userForm.value;
+            this.userService.register(this.userInfo)
+                .subscribe(
+                    data=>{
+                        this.router.navigate(['/home']);
+                        //console.log(data);
+                    },
+                    error=>{
+                        this.formErrors.formError=error.message;
+                    }
+                )
         }
         else{
             this.formErrors.formError='存在不合法的输入项，请检查';
         }
-        console.log(this.userInfo);
     }
 
     //重置表单

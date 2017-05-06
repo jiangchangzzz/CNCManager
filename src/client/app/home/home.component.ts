@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
+    constructor(){
+    }
 
+    ngOnInit(){
+    
+    }
 }

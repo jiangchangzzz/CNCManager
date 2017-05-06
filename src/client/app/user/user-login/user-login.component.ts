@@ -3,6 +3,7 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
  
 import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
     moduleId: module.id,
@@ -36,7 +37,8 @@ export class UserLoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private router: Router
+        private router: Router,
+        private userService: UserService
     ) { }
 
     ngOnInit() { 
@@ -92,11 +94,20 @@ export class UserLoginComponent implements OnInit {
     login(): void{
         if(this.loginForm.valid){
             this.userInfo=this.loginForm.value;
+            this.userService.login(this.userInfo)
+                .subscribe(
+                    data=>{
+                        this.router.navigate(['/home']);
+                        //console.log(data);
+                    },
+                    error=>{
+                        this.formErrors.formError=error.message;
+                    }
+                );
         }
         else{
             this.formErrors.formError='存在不合法的输入项，请检查';
         }
-        console.log(this.userInfo);
     }
 
     //忘记密码
