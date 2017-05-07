@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 
 import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
     moduleId: module.id,
@@ -26,10 +27,12 @@ export class ForgetPwdComponent implements OnInit {
         }
     }
 
+    messageType: string;
     message: string;
 
     constructor(
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private userService: UserService
     ) { }
 
     ngOnInit() { 
@@ -72,7 +75,18 @@ export class ForgetPwdComponent implements OnInit {
     //发送验证邮件
     sendEmail(): void{
         if(this.forgetForm.valid){
-            
+            this.forgetInfo=this.forgetForm.value;
+            this.userService.sendEmail(this.forgetInfo.email)
+                .subscribe(
+                    (data)=>{
+                        this.messageType='success';
+                        this.message=data.message;
+                    },
+                    (error)=>{
+                        this.messageType='danger';
+                        this.message=error.message;
+                    }
+                );
         }
         else{
             this.formErrors.formError='存在不合法的输入项，请检查';

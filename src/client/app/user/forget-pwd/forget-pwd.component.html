@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-success">
-
+            <div class="alert alert-{{messageType}}" *ngIf="message">
+                {{message}}
             </div>
         </div>
     </div>

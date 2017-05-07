@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { LocalStorageService } from './service/index';
-import { SizePipe,OrderByPipe } from './pipe/index';
+import { SizePipe,OrderByPipe,EncodePipe } from './pipe/index';
 import { OrderIconDirective } from './directive/index';
 
 
@@ -25,6 +25,7 @@ import { OrderIconDirective } from './directive/index';
     PaginationComponent,
     SizePipe,
     OrderByPipe,
+    EncodePipe,
     OrderIconDirective
   ],
   exports: [
@@ -39,6 +40,7 @@ import { OrderIconDirective } from './directive/index';
     PaginationComponent,
     SizePipe,
     OrderByPipe,
+    EncodePipe,
     OrderIconDirective
   ]
 })

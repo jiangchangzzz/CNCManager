@@ -24,3 +24,21 @@
 .middle-nav .add-feedsystem{
     cursor: pointer;
 }
+
+.nav .remove{
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+li .remove{
+    visibility: hidden;
+}
+
+li.active .remove{
+    visibility: visible;
+}
+
+li .remove:hover{
+    border-color: #ccc;
+}

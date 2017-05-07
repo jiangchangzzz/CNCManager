@@ -13,6 +13,7 @@ import { LocalStorageService } from '../../shared/service/index';
 export class UserService {
     private readonly registerUrl=`${SITE_HOST_URL}user-register-mock.json`;
     private readonly loginUrl=`${SITE_HOST_URL}user-login-mock.json`;
+    private readonly validateEmailUrl=`${SITE_HOST_URL}forget-pwd-mock.json`;
 
     subject: Subject<User>=new Subject<User>();
 
@@ -28,6 +29,11 @@ export class UserService {
 
     //注册用户
     register(user: User): Observable<User>{
+        let body=JSON.stringify(user);
+        let headers=new Headers();
+        headers.append('Content-Type','application/json');
+        //TODO
+
         return this.http
             .get(this.registerUrl)
             .map((response: Response)=>{
@@ -44,6 +50,7 @@ export class UserService {
         let body=JSON.stringify(user);
         let headers=new Headers();
         headers.append('Content-Type','application/json');
+        //TODO
 
         return this.http
             .get(this.registerUrl)
@@ -60,6 +67,18 @@ export class UserService {
     logout(): void{
         this.localStorageService.removeItem('currentUser');
         this.subject.next();
+    }
+
+    //发送验证邮件
+    sendEmail(email: string): Observable<any>{
+        let headers=new Headers();
+        headers.append('Content-Type','application/json');
+        //TODO
+
+        return this.http
+            .get(this.validateEmailUrl)
+            .map((response: Response)=>response.json())
+            .catch(this.handleError);
     }
 
     //错误处理

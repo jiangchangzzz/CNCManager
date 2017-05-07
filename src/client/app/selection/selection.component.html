@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title">数控机床选型</h1>
     <p class="text">基于数控机床数据中心的数据支撑，根据进给系统各部件的配置计算对每个部件进行参数化选型</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">查看帮助</a></p>
+    <p><a class="btn btn-primary btn-lg" [routerLink]="['/about']" role="button">查看帮助</a></p>
   </div>
 </div>
 
@@ -13,6 +13,9 @@
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','X']">进给轴x轴</a></li>
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Y']">进给轴y轴</a></li>
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Z']">进给轴z轴</a></li>
+    <li role="presentation" routerLinkActive="active" *ngFor="let shaftName of shaftNames">
+      <a [routerLink]="['/selection/feedSystem',shaftName|encode]">{{shaftName}}轴<!--<i class="glyphicon glyphicon-remove remove pull-right"></i>--></a>
+    </li>
     <li role="presentation" class="add-feedsystem" (click)="showAddedModal()"><a><i class="glyphicon glyphicon-plus"></i></a></li>
   </ul>
   <div *ngIf="isAddedModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #addedModal="bs-modal" class="modal fade"
@@ -25,17 +28,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <form class="form-horizontal" role="form" (ngSubmit)="doSubmit()" novalidate>
+        <form class="form-horizontal" role="form" [formGroup]="addShaftForm" (ngSubmit)="addShaft()" novalidate>
           <div class="modal-body">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': formErrors.shaftName}">
               <label class="col-md-4 control-label" for="shaftName">轴的名称</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="shaftName" name="shaftName" [(ngModel)]="shaftName" required maxlength="5">
+                <input type="text" class="form-control" id="shaftName" formControlName="shaftName">
+                <p class="text-danger" *ngIf="formErrors.shaftName">
+                  {{formErrors.shaftName}}
+                </p>
               </div>
+            </div>
+            <div class="form-group" *ngIf="formErrors.formError">
+                <div class="col-md-offset-1 col-md-10 alert alert-danger">
+                  {{formErrors.formError}}
+                </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">确认</button>
+            <button type="submit" class="btn btn-primary" [disabled]="addShaftForm.invalid">确认</button>
             <button type="button" class="btn btn-default" (click)="hideAddedModal()">取消</button>
           </div>
         </form>
