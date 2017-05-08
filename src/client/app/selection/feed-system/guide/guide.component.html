@@ -1,74 +1,142 @@
 <div class="block">
+   <ol class="breadcrumb">
+    <li><a [routerLink]="['/selection/feedSystem/'+axis]">进给轴{{axis}}轴</a></li>
+    <li class="active">导轨</li>
+  </ol>
   <div class="row">
     <div class="col-md-4">
       <img src="assets/images/selection/Guide.jpg" class="img-thumbnail">
     </div>
-    <form role="form">
+    <form role="form" class="form-horizontal" #guideForm="ngForm" (ngSubmit)="compute()" novalidate>
       <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">导轨相关尺寸</h3>
+            <h3 class="panel-title">导轨技术参数</h3>
           </div>
-          <div class="panel-body" class="form-inline">
+          <div class="panel-body">
             <div class="form-group">
-              <label for="sizeL0" class="control-label">尺寸L0:</label>
-              <input type="number" id="sizeL0" class="form-control left-control" palceholder="请输入值"/>
-              <label class="control-label">mm</label>
+              <label class="col-md-4 control-label" for="guidType">导轨类型:</label>
+              <div class="col-md-6">
+                <select class="form-control" id="guidType" name="guidType" [(ngModel)]="guide.guidType">
+                    <option *ngFor="let guideTypeOption of guideTypeOptions">{{guideTypeOption}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="rollerType">滚子类型:</label>
+              <div class="col-md-6">
+                <select class="form-control" id="rollerType" name="rollerType" [(ngModel)]="guide.rollerType">
+                  <option *ngFor="let rollerTypeOption of rollerTypeOptions">{{rollerTypeOption}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="XMass">X轴重量:</label>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="XMass" name="XMass" [(ngModel)]="guide.XMass" required nonnegative>
+                </div>
+                <p class="col-md-2 form-control-static">kg</p>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="life">寿命:</label>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="life" name="life" [(ngModel)]="guide.life" required nonnegative>
+                </div>
+                <p class="col-md-2 form-control-static">h</p>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="safety">安全系数:</label>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="safety" name="safety" [(ngModel)]="guide.safety" required nonnegative>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="load">载荷系数:</label>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="load" name="load" [(ngModel)]="guide.load" required nonnegative>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="contact">接触系数:</label>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="contact" name="contact" [(ngModel)]="guide.contact" required nonnegative>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="friction">摩擦系数:</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" id="friction" name="friction" [(ngModel)]="guide.friction" required nonnegative>
+                </div>  
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">导轨参数</h3>
+            <h3 class="panel-title">导轨尺寸参数</h3>
           </div>
-          <div class="panel-body form-horizontal">
+          <div class="panel-body">
             <div class="form-group">
-              <label class="col-md-4 control-label">导轨类型:</label>
-              <div class="col-md-8">
-              <select class="form-control">
-                  <option>red</option>
-              </select>
+              <label class="col-md-4 control-label" for="sizeL0">尺寸L0:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL0" name="sizeL0" [(ngModel)]="guide.sizeL0" required nonnegative>
               </div>
+              <p class="col-md-2 form-control-static">mm</p>
             </div>
             <div class="form-group">
-              <label class="col-md-4 control-label">滚子类型:</label>
-              <div class="col-md-8">
-                <select class="form-control"></select>
+              <label class="col-md-4 control-label" for="sizeL1">尺寸L1:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL1" name="sizeL1" [(ngModel)]="guide.sizeL1" required nonnegative>
               </div>
+              <p class="col-md-2 form-control-static">mm</p>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">X轴重量:</label>
-                <div class="col-md-6">
-                    <input type="number" class="form-control">
-                </div>
-                <p class="col-md-2 form-control-static">kg</p>
+              <label class="col-md-4 control-label" for="sizeL2">尺寸L2:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL2" name="sizeL2" [(ngModel)]="guide.sizeL2" required nonnegative>
+              </div>
+              <p class="col-md-2 form-control-static">mm</p>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">寿命:</label>
-                <div class="col-md-6">
-                    <input type="number" class="form-control">
-                </div>
-                <p class="col-md-2 form-control-static">h</p>
+              <label class="col-md-4 control-label" for="sizeL3">尺寸L3:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL3" name="sizeL3" [(ngModel)]="guide.sizeL3" required nonnegative>
+              </div>
+              <p class="col-md-2 form-control-static">mm</p>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">安全系数:</label>
-                <div class="col-md-6">
-                    <input type="number" class="form-control">
-                </div>
+              <label class="col-md-4 control-label" for="sizeL4">尺寸L4:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL4" name="sizeL4" [(ngModel)]="guide.sizeL4" required nonnegative>
+              </div>
+              <p class="col-md-2 form-control-static">mm</p>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">载荷系数:</label>
-                <div class="col-md-6">
-                    <input type="number" class="form-control">
-                </div>
+              <label class="col-md-4 control-label" for="sizeL5">尺寸L5:</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="请输入值" id="sizeL5" name="sizeL5" [(ngModel)]="guide.sizeL5" required nonnegative>
+              </div>
+              <p class="col-md-2 form-control-static">mm</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">计算结果</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="col-md-6 control-label">最小额定静载荷:</label>
+              <p class="col-md-6 form-control-static">{{guide.minStaticLoad}}N</p>
             </div>
             <div class="form-group">
-                <label class="control-label">接触系数:</label>
-                <div>
-                    
-                </div>
+              <label class="col-md-6 control-label">最小额定动载荷:</label>
+              <p class="col-md-6 form-control-static">{{guide.minLiveLoad}}N</p>
+            </div>
+            <div class="form-group"> 
+              <button type="submit" class="col-md-offset-2 btn btn-primary" [disabled]="guideForm.invalid">计 算</button>
+              <button type="button" class="col-md-offset-2 btn btn-default" (click)="reset()">重 置</button>
             </div>
           </div>
         </div>

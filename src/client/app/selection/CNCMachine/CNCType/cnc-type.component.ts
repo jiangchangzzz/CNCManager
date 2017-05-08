@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../../../shared/service/local-storage.service';
+import { CNCType } from '../../model/index';
+import { CNCTypeService } from '../../service/CNCType.service';
 
 @Component({
     moduleId: module.id,
@@ -11,8 +13,8 @@ import { LocalStorageService } from '../../../shared/service/local-storage.servi
 })
 export class CNCTypeComponent{
     constructor(
-        private localStorageService: LocalStorageService,
-        private router: Router
+        private router: Router,
+        private CNCTypeService: CNCTypeService
     ){}
 
     CNCTypes: CNCType[]=[
@@ -33,14 +35,7 @@ export class CNCTypeComponent{
 
     //点击下一步，保存数控机床数据到本地
     nextStep(): void{
-
-        //如果上次选的机床类型和新选择的不同，则清除所有本地存储
-        let oldCNCType=this.localStorageService.getItem('CNCType');
-        if(oldCNCType && oldCNCType.name!==this.selectedType){
-            this.localStorageService.clear();
-        }
-
-        this.localStorageService.setItem('CNCType',this.selectedType);
+        this.CNCTypeService.setCNCType(this.selectedType);
         this.router.navigate(['/selection/CNCMachine/condition']);
     }
 
@@ -48,10 +43,4 @@ export class CNCTypeComponent{
     cancel(): void{
         this.selectedType=null;
     }
-}
-
-//数控机床类型
-export class CNCType{
-    name: string;
-    support: string;
 }

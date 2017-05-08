@@ -4,6 +4,7 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LocalStorageService }from '../shared/service/index';
+import { CNCTypeService } from './service/index';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { LocalStorageService }from '../shared/service/index';
     styleUrls: ['selection.component.css']
 })
 export class SelectionComponent implements OnInit{
+    navs: boolean[];
+
     addShaftForm: FormGroup;
     shaftName: string;
     shaftNames: string[]=[];
@@ -37,15 +40,37 @@ export class SelectionComponent implements OnInit{
     constructor(
         private localStorageService: LocalStorageService,
         private fb: FormBuilder,
-        private router: Router
+        private router: Router,
+        private CNCTypeService: CNCTypeService
     ){
 
     }
 
     ngOnInit(){
         this.buildForm();
+        this.CNCTypeService.getCNCType().subscribe(data=>this.showNavs(data.support));
+        this.showNavs();
     }
 
+    //根据数控机床类型显示不同的导航栏
+    showNavs(support?: string): void{
+        let oldType=this.localStorageService.getItem('CNCType');
+        if(oldType){
+            support=support || oldType.support;
+        }
+
+        if(support==='X'){
+            this.navs=[true,true,true,false,true];
+        }
+        else if(support==='C'){
+            this.navs=[true,false,false,true,true];
+        }
+        else{
+            this.navs=[false,false,false,false,false];
+        }
+    }   
+
+    //建立添加额外轴表单
     buildForm(): void{
         this.addShaftForm=this.fb.group({
             'shaftName': [
@@ -112,11 +137,13 @@ export class SelectionComponent implements OnInit{
         }
     }
 
+    //移除额外轴
     removeShaft(shaftName: string){
         let index=this.shaftNames.indexOf(shaftName);
         if(index>=0){
             this.shaftNames.splice(index,1);
             this.router.navigate(['/home']);
+            //TODO
         }
     }
 }

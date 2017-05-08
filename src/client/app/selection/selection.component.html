@@ -9,10 +9,11 @@
 <div class="container selection">
   <ul class="nav nav-tabs nav-justified middle-nav">
     <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/CNCMachine']">数控机床</a></li>
-    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/CNCSystem']">数控系统</a></li>
-    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','X']">进给轴x轴</a></li>
-    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Y']">进给轴y轴</a></li>
-    <li role="presentation" routerLinkActive="active"><a [routerLink]="['/selection/feedSystem','Z']">进给轴z轴</a></li>
+    <li role="presentation" routerLinkActive="active" *ngIf="navs[0]"><a [routerLink]="['/selection/CNCSystem']">数控系统</a></li>
+    <li role="presentation" routerLinkActive="active" *ngIf="navs[1]"><a [routerLink]="['/selection/feedSystem','X']">进给轴x轴</a></li>
+    <li role="presentation" routerLinkActive="active" *ngIf="navs[2]"><a [routerLink]="['/selection/feedSystem','Y']">进给轴y轴</a></li>
+    <li role="presentation" routerLinkActive="active" *ngIf="navs[3]"><a [routerLink]="['/selection/feedSystem','XY']">进给轴x/y轴</a></li>
+    <li role="presentation" routerLinkActive="active" *ngIf="navs[4]"><a [routerLink]="['/selection/feedSystem','Z']">进给轴z轴</a></li>
     <li role="presentation" routerLinkActive="active" *ngFor="let shaftName of shaftNames">
       <a [routerLink]="['/selection/feedSystem',shaftName|encode]">{{shaftName}}轴<!--<i class="glyphicon glyphicon-remove remove pull-right"></i>--></a>
     </li>

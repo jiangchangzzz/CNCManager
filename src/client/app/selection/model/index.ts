@@ -5,3 +5,5 @@ export * from './CNCSystem';
 export * from './IO-unit';
 export * from './UPS-power';
 export * from './wheel';
+export * from './CNCType.model';
+export * from './guide.model';

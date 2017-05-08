@@ -11,7 +11,7 @@ import { CNCMachineComponent, CNCTypeComponent, ConditionComponent } from './CNC
 import { CNCSystemComponent,SystemTypeComponent,SystemAccessoryComponent } from './CNCSystem/index';
 import { FeedSystemComponent,BallscrewComponent,BearingComponent,CouplingComponent,DriverComponent,GuideComponent,MotorComponent } from './feed-system/index';
 import { NonnegativeValidator } from './directive/index';
-import { DefaultService } from './service/index';
+import { DefaultService,CNCTypeService } from './service/index';
 import { SystemTypePipe } from './pipe/index';
 
 @NgModule({
@@ -35,7 +35,8 @@ import { SystemTypePipe } from './pipe/index';
         NonnegativeValidator,
         SystemTypePipe],
     providers: [
-        DefaultService
+        DefaultService,
+        CNCTypeService
     ]
 })
 export class SelectionModule{
