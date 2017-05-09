@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { SystemAccessoryService } from '../../service/index';
 import { LocalStorageService } from '../../../shared/service/index';
+import { CNCTypeService } from '../../service/CNCType.service';
 
 @Component({
     moduleId: module.id,
@@ -58,7 +59,8 @@ export class SystemAccessoryComponent implements OnInit{
     constructor(
         private systemAccessoryService: SystemAccessoryService,
         private router: Router,
-        private localStorageService: LocalStorageService
+        private localStorageService: LocalStorageService,
+        private CNCTypeService: CNCTypeService
     ){}
 
     ngOnInit(){
@@ -126,7 +128,13 @@ export class SystemAccessoryComponent implements OnInit{
         };
         this.localStorageService.setItem('accessory',accessory);
 
-        this.router.navigate(['']);
+        let support=this.CNCTypeService.currentCNCType.support;
+        if(support==='X'){
+            this.router.navigate(['/selection/feedSystem','X']);
+        }
+        else if(support==='C'){
+            this.router.navigate(['/selection/feedSystem','XY']);
+        }
     }
 
     //取消选择

@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { UserService } from '../../user/service/user.service';
 
@@ -27,11 +28,15 @@ export class HeaderComponent implements OnInit{
                     this.nickName=null;
                 }
             }
-        )
+        );
     }
 
     logout(): void{
         this.userService.logout();
         this.router.navigate(['/home']);
+    }
+
+    goCenter(): void{
+        this.router.navigate(['/center']);
     }
 }

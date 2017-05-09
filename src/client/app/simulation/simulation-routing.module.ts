@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SimulationComponent } from './simulation.component';
+import { AuthGuard } from '../user/service/index';
 
 const routes: Routes=[
     {
         path: 'simulation',
-        component: SimulationComponent
+        component: SimulationComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

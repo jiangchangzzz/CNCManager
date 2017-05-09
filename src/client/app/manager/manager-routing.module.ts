@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ManagerComponent } from './manager.component';
+import { AuthGuard } from '../user/service/index';
 
 const routes: Routes = [
   { 
       path: 'manager', 
-      component: ManagerComponent 
+      component: ManagerComponent,
+      canActivate: [AuthGuard] 
   },
 ];
 

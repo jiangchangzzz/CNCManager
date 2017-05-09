@@ -9,6 +9,8 @@ import { LocalStorageService } from '../../shared/service/index'
 export class CNCTypeService {
     subject: Subject<CNCType>=new Subject<CNCType>();
 
+    currentCNCType: CNCType;
+
     constructor(
         private localStorageService: LocalStorageService
     ) { }
@@ -22,6 +24,7 @@ export class CNCTypeService {
         }   
 
         this.localStorageService.setItem('CNCType',newType);
+        this.currentCNCType=newType;
         this.subject.next(newType); 
     }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
  
 import { User } from '../model/user';
 import { UserService } from '../service/user.service';
@@ -38,7 +38,8 @@ export class UserLoginComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private router: Router,
-        private userService: UserService
+        private userService: UserService,
+        private activatedRoute: ActivatedRoute
     ) { }
 
     ngOnInit() { 
@@ -97,7 +98,9 @@ export class UserLoginComponent implements OnInit {
             this.userService.login(this.userInfo)
                 .subscribe(
                     data=>{
-                        this.router.navigate(['/home']);
+                        //如果有传递returnUrl，则跳转回目标页
+                        let returnUrl=this.activatedRoute.snapshot.queryParams['returnUrl'];
+                        this.router.navigateByUrl(returnUrl?returnUrl:'/');
                         //console.log(data);
                     },
                     error=>{

@@ -15,6 +15,8 @@ export class UserService {
     private readonly loginUrl=`${SITE_HOST_URL}user-login-mock.json`;
     private readonly validateEmailUrl=`${SITE_HOST_URL}forget-pwd-mock.json`;
 
+    isLogin: boolean=false;
+
     subject: Subject<User>=new Subject<User>();
 
     constructor(
@@ -39,6 +41,7 @@ export class UserService {
             .map((response: Response)=>{
                 let user=response.json();
                 this.localStorageService.setItem('currentUser',response);
+                this.isLogin=true;
                 this.subject.next(user);
                 return user;
             })
@@ -57,6 +60,7 @@ export class UserService {
             .map((response: Response)=>{
                 let user=response.json();
                 this.localStorageService.setItem('currentUser',user);
+                this.isLogin=true;
                 this.subject.next(user);
                 return user;
             })
@@ -66,6 +70,7 @@ export class UserService {
     //注销用户
     logout(): void{
         this.localStorageService.removeItem('currentUser');
+        this.isLogin=false;
         this.subject.next();
     }
 

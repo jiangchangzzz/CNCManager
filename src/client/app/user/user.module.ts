@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { SharedModule } from '../shared/shared.module';
 import { UserRoutingModule } from './user-routing.component';
 import { UserRegisterComponent,UserLoginComponent,ForgetPwdComponent,UserCenterComponent } from './index';
-import { UserService } from './service/user.service';
+import { UserService,AuthGuard } from './service/index';
 import { EqualValidator } from './directive/equal-validator.directive';
 
 @NgModule({
@@ -29,7 +29,7 @@ export class UserModule {
     static forRoot(): ModuleWithProviders {
     return {
       ngModule: UserModule,
-      providers: [UserService]
+      providers: [UserService,AuthGuard]
     };
   }
 }
